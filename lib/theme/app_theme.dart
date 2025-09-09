@@ -82,8 +82,6 @@ class AppThemeData {
     scaffoldBackgroundColor: backgroundLight,
     cardColor: surfaceLight,
     dividerColor: dividerLight,
-
-    // AppBar theme for professional logistics interface
     appBarTheme: AppBarTheme(
       backgroundColor: surfaceLight,
       foregroundColor: textPrimaryLight,
@@ -101,17 +99,15 @@ class AppThemeData {
         fontWeight: FontWeight.w500,
         color: textPrimaryLight,
       ),
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: textPrimaryLight,
         size: 24,
       ),
-      actionsIconTheme: IconThemeData(
+      actionsIconTheme: const IconThemeData(
         color: textPrimaryLight,
         size: 24,
       ),
     ),
-
-    // Card theme with subtle elevation
     cardTheme: CardTheme(
       color: surfaceLight,
       elevation: 2.0,
@@ -122,8 +118,6 @@ class AppThemeData {
       ),
       margin: const EdgeInsets.all(8.0),
     ),
-
-    // Bottom navigation optimized for truck-friendly interaction
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: surfaceLight,
       selectedItemColor: primaryLight,
@@ -139,8 +133,6 @@ class AppThemeData {
       type: BottomNavigationBarType.fixed,
       elevation: 8.0,
     ),
-
-    // FAB theme for contextual actions
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: primaryLight,
       foregroundColor: onPrimaryLight,
@@ -149,8 +141,6 @@ class AppThemeData {
         borderRadius: BorderRadius.circular(16.0),
       ),
     ),
-
-    // Button themes optimized for glove-friendly interaction
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: onPrimaryLight,
@@ -168,7 +158,6 @@ class AppThemeData {
         ),
       ),
     ),
-
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryLight,
@@ -185,7 +174,6 @@ class AppThemeData {
         ),
       ),
     ),
-
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryLight,
@@ -201,11 +189,7 @@ class AppThemeData {
         ),
       ),
     ),
-
-    // Text theme using Inter font for optimal mobile readability
     textTheme: _buildTextTheme(isLight: true),
-
-    // Input decoration optimized for outdoor visibility
     inputDecorationTheme: InputDecorationTheme(
       fillColor: surfaceLight,
       filled: true,
@@ -246,8 +230,6 @@ class AppThemeData {
         fontWeight: FontWeight.w400,
       ),
     ),
-
-    // Interactive element themes
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
@@ -262,7 +244,6 @@ class AppThemeData {
         return textSecondaryLight.withAlpha(77);
       }),
     ),
-
     checkboxTheme: CheckboxThemeData(
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
@@ -276,7 +257,6 @@ class AppThemeData {
         borderRadius: BorderRadius.circular(4.0),
       ),
     ),
-
     radioTheme: RadioThemeData(
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
@@ -285,13 +265,11 @@ class AppThemeData {
         return textSecondaryLight;
       }),
     ),
-
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primaryLight,
       linearTrackColor: primaryLight.withAlpha(51),
       circularTrackColor: primaryLight.withAlpha(51),
     ),
-
     sliderTheme: SliderThemeData(
       activeTrackColor: primaryLight,
       thumbColor: primaryLight,
@@ -299,8 +277,7 @@ class AppThemeData {
       inactiveTrackColor: primaryLight.withAlpha(77),
       trackHeight: 4.0,
     ),
-
-    tabBarThemeData: TabBarThemeData(
+    tabBarTheme: TabBarTheme(
       labelColor: primaryLight,
       unselectedLabelColor: textSecondaryLight,
       indicatorColor: primaryLight,
@@ -314,7 +291,6 @@ class AppThemeData {
         fontWeight: FontWeight.w400,
       ),
     ),
-
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
         color: textPrimaryLight.withAlpha(230),
@@ -327,7 +303,6 @@ class AppThemeData {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
     ),
-
     snackBarTheme: SnackBarThemeData(
       backgroundColor: textPrimaryLight,
       contentTextStyle: GoogleFonts.inter(
@@ -342,8 +317,6 @@ class AppThemeData {
       ),
       elevation: 4.0,
     ),
-
-    // List tile theme for consistent spacing
     listTileTheme: ListTileThemeData(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       titleTextStyle: GoogleFonts.inter(
@@ -356,7 +329,8 @@ class AppThemeData {
         fontWeight: FontWeight.w400,
         color: textSecondaryLight,
       ),
-    ), dialogTheme: DialogThemeData(backgroundColor: surfaceLight),
+    ),
+    dialogTheme: DialogTheme(backgroundColor: surfaceLight),
   );
 
   /// Dark theme optimized for night driving and low-light conditions
@@ -412,11 +386,11 @@ class AppThemeData {
         fontWeight: FontWeight.w500,
         color: textPrimaryDark,
       ),
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: textPrimaryDark,
         size: 24,
       ),
-      actionsIconTheme: IconThemeData(
+      actionsIconTheme: const IconThemeData(
         color: textPrimaryDark,
         size: 24,
       ),
@@ -642,17 +616,16 @@ class AppThemeData {
         fontWeight: FontWeight.w400,
         color: textSecondaryDark,
       ),
-    ), dialogTheme: DialogThemeData(backgroundColor: surfaceDark),
+    ),
+    dialogTheme: DialogTheme(backgroundColor: surfaceDark),
   );
 
   /// Helper method to build text theme optimized for logistics applications
   static TextTheme _buildTextTheme({required bool isLight}) {
     final Color textPrimary = isLight ? textPrimaryLight : textPrimaryDark;
-    final Color textSecondary =
-        isLight ? textSecondaryLight : textSecondaryDark;
+    final Color textSecondary = isLight ? textSecondaryLight : textSecondaryDark;
 
     return TextTheme(
-      // Display styles for large headers
       displayLarge: GoogleFonts.inter(
         fontSize: 57,
         fontWeight: FontWeight.w700,
@@ -674,8 +647,6 @@ class AppThemeData {
         letterSpacing: 0,
         height: 1.22,
       ),
-
-      // Headline styles for section headers
       headlineLarge: GoogleFonts.inter(
         fontSize: 32,
         fontWeight: FontWeight.w600,
@@ -697,8 +668,6 @@ class AppThemeData {
         letterSpacing: 0,
         height: 1.33,
       ),
-
-      // Title styles for card headers and important content
       titleLarge: GoogleFonts.inter(
         fontSize: 22,
         fontWeight: FontWeight.w500,
@@ -720,8 +689,6 @@ class AppThemeData {
         letterSpacing: 0.1,
         height: 1.43,
       ),
-
-      // Body styles for main content
       bodyLarge: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w400,
@@ -743,8 +710,6 @@ class AppThemeData {
         letterSpacing: 0.4,
         height: 1.33,
       ),
-
-      // Label styles for buttons and form labels
       labelLarge: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w500,
