@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// A class that contains all theme configurations for the logistics application.
 class AppTheme {
   AppTheme._();
 
-  // Industrial Trust Palette - Core colors for logistics application
+  // Light theme colors
   static const Color primaryLight = Color(0xFF2563EB);
   static const Color secondaryLight = Color(0xFF64748B);
   static const Color successLight = Color(0xFF059669);
@@ -17,7 +16,7 @@ class AppTheme {
   static const Color textPrimaryLight = Color(0xFF0F172A);
   static const Color textSecondaryLight = Color(0xFF475569);
 
-  // Dark theme colors (adapted for professional use)
+  // Dark theme colors
   static const Color primaryDark = Color(0xFF3B82F6);
   static const Color secondaryDark = Color(0xFF94A3B8);
   static const Color successDark = Color(0xFF10B981);
@@ -46,32 +45,31 @@ class AppTheme {
   static const Color dividerLight = Color(0xFFE2E8F0);
   static const Color dividerDark = Color(0xFF334155);
 
-  /// Light theme optimized for logistics applications
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: primaryLight,
       onPrimary: onPrimaryLight,
-      primaryContainer: primaryLight.withAlpha(26),
+      primaryContainer: primaryLight.withOpacity(0.1),
       onPrimaryContainer: primaryLight,
       secondary: secondaryLight,
       onSecondary: onSecondaryLight,
-      secondaryContainer: secondaryLight.withAlpha(26),
+      secondaryContainer: secondaryLight.withOpacity(0.1),
       onSecondaryContainer: secondaryLight,
       tertiary: successLight,
       onTertiary: onPrimaryLight,
-      tertiaryContainer: successLight.withAlpha(26),
+      tertiaryContainer: successLight.withOpacity(0.1),
       onTertiaryContainer: successLight,
       error: errorLight,
       onError: onErrorLight,
-      errorContainer: errorLight.withAlpha(26),
+      errorContainer: errorLight.withOpacity(0.1),
       onErrorContainer: errorLight,
       surface: surfaceLight,
       onSurface: onSurfaceLight,
       onSurfaceVariant: textSecondaryLight,
       outline: borderLight,
-      outlineVariant: borderLight.withAlpha(128),
+      outlineVariant: borderLight.withOpacity(0.5),
       shadow: shadowLight,
       scrim: shadowLight,
       inverseSurface: backgroundDark,
@@ -82,8 +80,6 @@ class AppTheme {
     scaffoldBackgroundColor: backgroundLight,
     cardColor: surfaceLight,
     dividerColor: dividerLight,
-
-    // AppBar theme for professional logistics interface
     appBarTheme: AppBarTheme(
       backgroundColor: surfaceLight,
       foregroundColor: textPrimaryLight,
@@ -110,8 +106,6 @@ class AppTheme {
         size: 24,
       ),
     ),
-
-    // Card theme with subtle elevation
     cardTheme: CardTheme(
       color: surfaceLight,
       elevation: 2.0,
@@ -122,8 +116,6 @@ class AppTheme {
       ),
       margin: const EdgeInsets.all(8.0),
     ),
-
-    // Bottom navigation optimized for truck-friendly interaction
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: surfaceLight,
       selectedItemColor: primaryLight,
@@ -139,8 +131,6 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
       elevation: 8.0,
     ),
-
-    // FAB theme for contextual actions
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: primaryLight,
       foregroundColor: onPrimaryLight,
@@ -149,8 +139,6 @@ class AppTheme {
         borderRadius: BorderRadius.circular(16.0),
       ),
     ),
-
-    // Button themes optimized for glove-friendly interaction
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: onPrimaryLight,
@@ -168,7 +156,6 @@ class AppTheme {
         ),
       ),
     ),
-
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryLight,
@@ -185,7 +172,6 @@ class AppTheme {
         ),
       ),
     ),
-
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryLight,
@@ -201,11 +187,7 @@ class AppTheme {
         ),
       ),
     ),
-
-    // Text theme using Inter font for optimal mobile readability
     textTheme: _buildTextTheme(isLight: true),
-
-    // Input decoration optimized for outdoor visibility
     inputDecorationTheme: InputDecorationTheme(
       fillColor: surfaceLight,
       filled: true,
@@ -236,7 +218,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
       ),
       hintStyle: GoogleFonts.inter(
-        color: textSecondaryLight.withAlpha(179),
+        color: textSecondaryLight.withOpacity(0.7),
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
@@ -246,60 +228,53 @@ class AppTheme {
         fontWeight: FontWeight.w400,
       ),
     ),
-
-    // Interactive element themes
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      thumbColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryLight;
         }
         return textSecondaryLight;
       }),
-      trackColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
-          return primaryLight.withAlpha(77);
+      trackColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return primaryLight.withOpacity(0.3);
         }
-        return textSecondaryLight.withAlpha(77);
+        return textSecondaryLight.withOpacity(0.3);
       }),
     ),
-
     checkboxTheme: CheckboxThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      fillColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryLight;
         }
         return Colors.transparent;
       }),
-      checkColor: WidgetStateProperty.all(onPrimaryLight),
+      checkColor: MaterialStateProperty.all(onPrimaryLight),
       side: BorderSide(color: borderLight, width: 2.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
       ),
     ),
-
     radioTheme: RadioThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      fillColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryLight;
         }
         return textSecondaryLight;
       }),
     ),
-
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primaryLight,
-      linearTrackColor: primaryLight.withAlpha(51),
-      circularTrackColor: primaryLight.withAlpha(51),
+      linearTrackColor: primaryLight.withOpacity(0.2),
+      circularTrackColor: primaryLight.withOpacity(0.2),
     ),
-
     sliderTheme: SliderThemeData(
       activeTrackColor: primaryLight,
       thumbColor: primaryLight,
-      overlayColor: primaryLight.withAlpha(51),
-      inactiveTrackColor: primaryLight.withAlpha(77),
+      overlayColor: primaryLight.withOpacity(0.2),
+      inactiveTrackColor: primaryLight.withOpacity(0.3),
       trackHeight: 4.0,
     ),
-
     tabBarTheme: TabBarTheme(
       labelColor: primaryLight,
       unselectedLabelColor: textSecondaryLight,
@@ -314,10 +289,9 @@ class AppTheme {
         fontWeight: FontWeight.w400,
       ),
     ),
-
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
-        color: textPrimaryLight.withAlpha(230),
+        color: textPrimaryLight.withOpacity(0.9),
         borderRadius: BorderRadius.circular(8.0),
       ),
       textStyle: GoogleFonts.inter(
@@ -327,7 +301,6 @@ class AppTheme {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
     ),
-
     snackBarTheme: SnackBarThemeData(
       backgroundColor: textPrimaryLight,
       contentTextStyle: GoogleFonts.inter(
@@ -342,8 +315,6 @@ class AppTheme {
       ),
       elevation: 4.0,
     ),
-
-    // List tile theme for consistent spacing
     listTileTheme: ListTileThemeData(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       titleTextStyle: GoogleFonts.inter(
@@ -356,35 +327,35 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: textSecondaryLight,
       ),
-    ), dialogTheme: DialogThemeData(backgroundColor: surfaceLight),
+    ),
+    dialogTheme: DialogTheme(backgroundColor: surfaceLight),
   );
 
-  /// Dark theme optimized for night driving and low-light conditions
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     colorScheme: ColorScheme(
       brightness: Brightness.dark,
       primary: primaryDark,
       onPrimary: onPrimaryDark,
-      primaryContainer: primaryDark.withAlpha(51),
+      primaryContainer: primaryDark.withOpacity(0.2),
       onPrimaryContainer: primaryDark,
       secondary: secondaryDark,
       onSecondary: onSecondaryDark,
-      secondaryContainer: secondaryDark.withAlpha(51),
+      secondaryContainer: secondaryDark.withOpacity(0.2),
       onSecondaryContainer: secondaryDark,
       tertiary: successDark,
       onTertiary: onPrimaryDark,
-      tertiaryContainer: successDark.withAlpha(51),
+      tertiaryContainer: successDark.withOpacity(0.2),
       onTertiaryContainer: successDark,
       error: errorDark,
       onError: onErrorDark,
-      errorContainer: errorDark.withAlpha(51),
+      errorContainer: errorDark.withOpacity(0.2),
       onErrorContainer: errorDark,
       surface: surfaceDark,
       onSurface: onSurfaceDark,
       onSurfaceVariant: textSecondaryDark,
       outline: borderDark,
-      outlineVariant: borderDark.withAlpha(128),
+      outlineVariant: borderDark.withOpacity(0.5),
       shadow: shadowDark,
       scrim: shadowDark,
       inverseSurface: backgroundLight,
@@ -533,7 +504,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
       ),
       hintStyle: GoogleFonts.inter(
-        color: textSecondaryDark.withAlpha(179),
+        color: textSecondaryDark.withOpacity(0.7),
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
@@ -544,35 +515,35 @@ class AppTheme {
       ),
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      thumbColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryDark;
         }
         return textSecondaryDark;
       }),
-      trackColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
-          return primaryDark.withAlpha(77);
+      trackColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return primaryDark.withOpacity(0.3);
         }
-        return textSecondaryDark.withAlpha(77);
+        return textSecondaryDark.withOpacity(0.3);
       }),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      fillColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryDark;
         }
         return Colors.transparent;
       }),
-      checkColor: WidgetStateProperty.all(onPrimaryDark),
+      checkColor: MaterialStateProperty.all(onPrimaryDark),
       side: BorderSide(color: borderDark, width: 2.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
       ),
     ),
     radioTheme: RadioThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
+      fillColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
           return primaryDark;
         }
         return textSecondaryDark;
@@ -580,14 +551,14 @@ class AppTheme {
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: primaryDark,
-      linearTrackColor: primaryDark.withAlpha(51),
-      circularTrackColor: primaryDark.withAlpha(51),
+      linearTrackColor: primaryDark.withOpacity(0.2),
+      circularTrackColor: primaryDark.withOpacity(0.2),
     ),
     sliderTheme: SliderThemeData(
       activeTrackColor: primaryDark,
       thumbColor: primaryDark,
-      overlayColor: primaryDark.withAlpha(51),
-      inactiveTrackColor: primaryDark.withAlpha(77),
+      overlayColor: primaryDark.withOpacity(0.2),
+      inactiveTrackColor: primaryDark.withOpacity(0.3),
       trackHeight: 4.0,
     ),
     tabBarTheme: TabBarTheme(
@@ -606,7 +577,7 @@ class AppTheme {
     ),
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
-        color: textPrimaryDark.withAlpha(230),
+        color: textPrimaryDark.withOpacity(0.9),
         borderRadius: BorderRadius.circular(8.0),
       ),
       textStyle: GoogleFonts.inter(
@@ -642,129 +613,58 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: textSecondaryDark,
       ),
-    ), dialogTheme: DialogThemeData(backgroundColor: surfaceDark),
+    ),
+    dialogTheme: DialogTheme(backgroundColor: surfaceDark),
   );
 
-  /// Helper method to build text theme optimized for logistics applications
   static TextTheme _buildTextTheme({required bool isLight}) {
     final Color textPrimary = isLight ? textPrimaryLight : textPrimaryDark;
-    final Color textSecondary =
-        isLight ? textSecondaryLight : textSecondaryDark;
-
+    final Color textSecondary = isLight ? textSecondaryLight : textSecondaryDark;
     return TextTheme(
-      // Display styles for large headers
       displayLarge: GoogleFonts.inter(
-        fontSize: 57,
-        fontWeight: FontWeight.w700,
-        color: textPrimary,
-        letterSpacing: -0.25,
-        height: 1.12,
+        fontSize: 57, fontWeight: FontWeight.w700, color: textPrimary, letterSpacing: -0.25, height: 1.12,
       ),
       displayMedium: GoogleFonts.inter(
-        fontSize: 45,
-        fontWeight: FontWeight.w700,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.16,
+        fontSize: 45, fontWeight: FontWeight.w700, color: textPrimary, letterSpacing: 0, height: 1.16,
       ),
       displaySmall: GoogleFonts.inter(
-        fontSize: 36,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.22,
+        fontSize: 36, fontWeight: FontWeight.w600, color: textPrimary, letterSpacing: 0, height: 1.22,
       ),
-
-      // Headline styles for section headers
       headlineLarge: GoogleFonts.inter(
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.25,
+        fontSize: 32, fontWeight: FontWeight.w600, color: textPrimary, letterSpacing: 0, height: 1.25,
       ),
       headlineMedium: GoogleFonts.inter(
-        fontSize: 28,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.29,
+        fontSize: 28, fontWeight: FontWeight.w600, color: textPrimary, letterSpacing: 0, height: 1.29,
       ),
       headlineSmall: GoogleFonts.inter(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.33,
+        fontSize: 24, fontWeight: FontWeight.w600, color: textPrimary, letterSpacing: 0, height: 1.33,
       ),
-
-      // Title styles for card headers and important content
       titleLarge: GoogleFonts.inter(
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.27,
+        fontSize: 22, fontWeight: FontWeight.w500, color: textPrimary, letterSpacing: 0, height: 1.27,
       ),
       titleMedium: GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: textPrimary,
-        letterSpacing: 0.15,
-        height: 1.50,
+        fontSize: 16, fontWeight: FontWeight.w500, color: textPrimary, letterSpacing: 0.15, height: 1.50,
       ),
       titleSmall: GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: textPrimary,
-        letterSpacing: 0.1,
-        height: 1.43,
+        fontSize: 14, fontWeight: FontWeight.w500, color: textPrimary, letterSpacing: 0.1, height: 1.43,
       ),
-
-      // Body styles for main content
       bodyLarge: GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: textPrimary,
-        letterSpacing: 0.5,
-        height: 1.50,
+        fontSize: 16, fontWeight: FontWeight.w400, color: textPrimary, letterSpacing: 0.5, height: 1.50,
       ),
       bodyMedium: GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        color: textPrimary,
-        letterSpacing: 0.25,
-        height: 1.43,
+        fontSize: 14, fontWeight: FontWeight.w400, color: textPrimary, letterSpacing: 0.25, height: 1.43,
       ),
       bodySmall: GoogleFonts.inter(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: textSecondary,
-        letterSpacing: 0.4,
-        height: 1.33,
+        fontSize: 12, fontWeight: FontWeight.w400, color: textSecondary, letterSpacing: 0.4, height: 1.33,
       ),
-
-      // Label styles for buttons and form labels
       labelLarge: GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: textPrimary,
-        letterSpacing: 0.1,
-        height: 1.43,
+        fontSize: 14, fontWeight: FontWeight.w500, color: textPrimary, letterSpacing: 0.1, height: 1.43,
       ),
       labelMedium: GoogleFonts.inter(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: textPrimary,
-        letterSpacing: 0.5,
-        height: 1.33,
+        fontSize: 12, fontWeight: FontWeight.w500, color: textPrimary, letterSpacing: 0.5, height: 1.33,
       ),
       labelSmall: GoogleFonts.inter(
-        fontSize: 11,
-        fontWeight: FontWeight.w500,
-        color: textSecondary,
-        letterSpacing: 0.5,
-        height: 1.45,
+        fontSize: 11, fontWeight: FontWeight.w500, color: textSecondary, letterSpacing: 0.5, height: 1.45,
       ),
     );
   }
