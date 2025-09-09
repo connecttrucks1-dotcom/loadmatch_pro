@@ -106,7 +106,7 @@ class AppTheme {
         size: 24,
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceLight,
       elevation: 2.0,
       shadowColor: shadowLight,
@@ -275,7 +275,7 @@ class AppTheme {
       inactiveTrackColor: primaryLight.withOpacity(0.3),
       trackHeight: 4.0,
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: TabBarThemeData(
       labelColor: primaryLight,
       unselectedLabelColor: textSecondaryLight,
       indicatorColor: primaryLight,
@@ -328,7 +328,7 @@ class AppTheme {
         color: textSecondaryLight,
       ),
     ),
-    dialogTheme: DialogTheme(backgroundColor: surfaceLight),
+    dialogTheme: DialogThemeData(backgroundColor: surfaceLight),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -392,7 +392,7 @@ class AppTheme {
         size: 24,
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceDark,
       elevation: 2.0,
       shadowColor: shadowDark,
@@ -561,7 +561,7 @@ class AppTheme {
       inactiveTrackColor: primaryDark.withOpacity(0.3),
       trackHeight: 4.0,
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: TabBarThemeData(
       labelColor: primaryDark,
       unselectedLabelColor: textSecondaryDark,
       indicatorColor: primaryDark,
@@ -614,7 +614,7 @@ class AppTheme {
         color: textSecondaryDark,
       ),
     ),
-    dialogTheme: DialogTheme(backgroundColor: surfaceDark),
+    dialogTheme: DialogThemeData(backgroundColor: surfaceDark),
   );
 
   static TextTheme _buildTextTheme({required bool isLight}) {
