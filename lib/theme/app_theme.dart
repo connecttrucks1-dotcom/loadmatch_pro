@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// A class that contains all theme configurations for the logistics application.
-class AppTheme {
-  AppTheme._();
+class AppThemeData {
+  AppThemeData._();
 
   // Industrial Trust Palette - Core colors for logistics application
   static const Color primaryLight = Color(0xFF2563EB);
@@ -300,7 +300,7 @@ class AppTheme {
       trackHeight: 4.0,
     ),
 
-    tabBarTheme: TabBarTheme(
+    tabBarThemeData: TabBarThemeData(
       labelColor: primaryLight,
       unselectedLabelColor: textSecondaryLight,
       indicatorColor: primaryLight,
